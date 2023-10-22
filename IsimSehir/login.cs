@@ -38,16 +38,14 @@ namespace IsimSehir
                 {
                     if (reader[1].ToString() == passwordtxt.Text)
                     {
-                        testlbl.Text = "Success";
+                        Mainpage mainpage = new Mainpage();
+                        mainpage.onlineuser = usernametxt.Text;
+                        this.Hide();
+                        mainpage.Show();
                     }
                 }
             }
             connect.connection.Close();
-
-            Mainpage mainpage = new Mainpage();
-            mainpage.onlineuser = usernametxt.Text;
-            this.Hide();
-            mainpage.Show();
             
         }
 
