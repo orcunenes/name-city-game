@@ -41,11 +41,14 @@ namespace IsimSehir
                         testlbl.Text = "Success";
                     }
                 }
-
-
             }
-
             connect.connection.Close();
+
+            Mainpage mainpage = new Mainpage();
+            mainpage.onlineuser = usernametxt.Text;
+            this.Hide();
+            mainpage.Show();
+            
         }
 
         private void registerlbl_Click(object sender, EventArgs e)
@@ -71,7 +74,8 @@ namespace IsimSehir
             SQLiteCommand cmd = new SQLiteCommand(sql, connect.connection);
             cmd.ExecuteReader();
             connect.connection.Close();
-
+            this.Hide();
+            
 
         }
     }

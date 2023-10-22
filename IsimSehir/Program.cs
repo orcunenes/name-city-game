@@ -16,7 +16,7 @@ namespace IsimSehir
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Mainpage());
+            Application.Run(new login());
         }
     }
 }
