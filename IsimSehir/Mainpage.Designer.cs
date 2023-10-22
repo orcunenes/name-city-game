@@ -34,9 +34,8 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.Roundcount = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.nametxt = new System.Windows.Forms.TextBox();
-            this.logintest = new System.Windows.Forms.Button();
+            this.onlineusername = new System.Windows.Forms.Label();
+            this.selectedones = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +52,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel1.Controls.Add(this.selectedones);
             this.panel1.Controls.Add(this.selectedcategories);
             this.panel1.Controls.Add(this.checkedListBox1);
             this.panel1.Location = new System.Drawing.Point(345, 95);
@@ -63,9 +63,10 @@
             // selectedcategories
             // 
             this.selectedcategories.AutoSize = true;
-            this.selectedcategories.Location = new System.Drawing.Point(311, 26);
+            this.selectedcategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectedcategories.Location = new System.Drawing.Point(357, 24);
             this.selectedcategories.Name = "selectedcategories";
-            this.selectedcategories.Size = new System.Drawing.Size(86, 13);
+            this.selectedcategories.Size = new System.Drawing.Size(144, 22);
             this.selectedcategories.TabIndex = 1;
             this.selectedcategories.Text = "PLACEHOLDER";
             // 
@@ -73,20 +74,21 @@
             // 
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Items.AddRange(new object[] {
-            "isim",
-            "şehir",
-            "hayvan",
-            "bitki",
-            "eşya",
-            "ünlü"});
+            "ISIM",
+            "SEHIR",
+            "HAYVAN",
+            "BITKI",
+            "ESYA",
+            "UNLU"});
             this.checkedListBox1.Location = new System.Drawing.Point(39, 12);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(149, 169);
             this.checkedListBox1.TabIndex = 0;
+            this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
             // 
             // Roundcount
             // 
-            this.Roundcount.Location = new System.Drawing.Point(901, 390);
+            this.Roundcount.Location = new System.Drawing.Point(659, 390);
             this.Roundcount.Name = "Roundcount";
             this.Roundcount.Size = new System.Drawing.Size(139, 20);
             this.Roundcount.TabIndex = 2;
@@ -94,37 +96,31 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(805, 393);
+            this.label1.Location = new System.Drawing.Point(563, 393);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "ROUND SAYISI :";
             // 
-            // label2
+            // onlineusername
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(342, 390);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "NAME :";
+            this.onlineusername.AutoSize = true;
+            this.onlineusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.onlineusername.ForeColor = System.Drawing.Color.Red;
+            this.onlineusername.Location = new System.Drawing.Point(1216, 9);
+            this.onlineusername.Name = "onlineusername";
+            this.onlineusername.Size = new System.Drawing.Size(111, 22);
+            this.onlineusername.TabIndex = 7;
+            this.onlineusername.Text = "USERNAME";
             // 
-            // nametxt
+            // selectedones
             // 
-            this.nametxt.Location = new System.Drawing.Point(384, 387);
-            this.nametxt.Name = "nametxt";
-            this.nametxt.Size = new System.Drawing.Size(139, 20);
-            this.nametxt.TabIndex = 4;
-            // 
-            // logintest
-            // 
-            this.logintest.Location = new System.Drawing.Point(382, 37);
-            this.logintest.Name = "logintest";
-            this.logintest.Size = new System.Drawing.Size(108, 23);
-            this.logintest.TabIndex = 6;
-            this.logintest.Text = "LOGINTEST";
-            this.logintest.UseVisualStyleBackColor = true;
-            this.logintest.Click += new System.EventHandler(this.logintest_Click);
+            this.selectedones.AutoSize = true;
+            this.selectedones.Location = new System.Drawing.Point(212, 24);
+            this.selectedones.Name = "selectedones";
+            this.selectedones.Size = new System.Drawing.Size(139, 13);
+            this.selectedones.TabIndex = 2;
+            this.selectedones.Text = "SELECTED CAREGORIES:";
             // 
             // Mainpage
             // 
@@ -132,15 +128,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GrayText;
             this.ClientSize = new System.Drawing.Size(1403, 643);
-            this.Controls.Add(this.logintest);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.nametxt);
+            this.Controls.Add(this.onlineusername);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Roundcount);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.startbtn);
             this.Name = "Mainpage";
             this.Text = "İsim Şehir ";
+            this.Load += new System.EventHandler(this.Mainpage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -156,9 +151,8 @@
         private System.Windows.Forms.Label selectedcategories;
         private System.Windows.Forms.TextBox Roundcount;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox nametxt;
-        private System.Windows.Forms.Button logintest;
+        private System.Windows.Forms.Label onlineusername;
+        private System.Windows.Forms.Label selectedones;
     }
 }
 
